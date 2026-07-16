@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satya Sachdeva — AI & Data Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --fog: #f4f1ec;
+    --cream: #faf8f4;
+    --gold: #c5973a;
+    --gold-light: #e8c878;
+    --steel: #4a5568;
+    --mist: #e8e4dc;
+    --accent: #1a3a5c;
+    --accent2: #2d6a4f;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--mist);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; letter-spacing: .03em;
+    color: var(--ink); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    font-size: .8rem; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--steel);
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4rem;
+    gap: 4rem;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(197,151,58,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { padding-top: 6rem; }
+  .hero-eyebrow {
+    font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--ink); margin-bottom: 1rem;
+  }
+  .hero-name em { font-style: italic; color: var(--gold); }
+  .hero-title {
+    font-size: 1.05rem; font-weight: 300; color: var(--steel);
+    margin-bottom: 2rem; max-width: 38ch;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .75rem 1.8rem;
+    font-size: .82rem; font-weight: 500; letter-spacing: .08em;
+    text-transform: uppercase; text-decoration: none;
+    border-radius: 2px; transition: all .25s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--ink); color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-secondary {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-secondary:hover { background: var(--ink); color: #fff; }
+  .hero-stats {
+    display: flex; gap: 3rem;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--steel); margin-top: .3rem;
+  }
+  .hero-image-wrap {
+    position: relative; display: flex; justify-content: center; align-items: center;
+    padding-top: 5rem;
+  }
+  .hero-img-bg {
+    position: absolute;
+    width: 400px; height: 480px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    border-radius: 4px;
+    top: 4rem; left: 50%; transform: translateX(-50%);
+    opacity: .12;
+  }
+  .hero-img-ring {
+    position: absolute;
+    width: 380px; height: 460px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    top: 4.8rem; left: 50%; transform: translateX(-44%);
+    opacity: .35;
+  }
+  .hero-photo {
+    position: relative; z-index: 2;
+    width: 340px; height: 420px;
+    object-fit: cover; object-position: top center;
+    border-radius: 4px;
+    filter: grayscale(15%);
+    box-shadow: 0 30px 80px rgba(15,25,35,.18);
+  }
+  .hero-photo-placeholder {
+    position: relative; z-index: 2;
+    width: 340px; height: 420px;
+    background: linear-gradient(160deg, var(--accent) 0%, #0f2d4a 100%);
+    border-radius: 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 30px 80px rgba(15,25,35,.18);
+    color: rgba(255,255,255,.6);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; letter-spacing: .08em;
+    gap: .8rem;
+  }
+  .hero-photo-placeholder svg { opacity: .5; }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 4rem; }
+  .section-label {
+    font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: .7rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300;
+    line-height: 1.15; margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .divider {
+    width: 48px; height: 1px; background: var(--gold);
+    margin-bottom: 3rem;
+  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--fog); }
+  .about-body p {
+    color: var(--steel); font-size: 1.02rem; font-weight: 300;
+    margin-bottom: 1.2rem; max-width: 65ch;
+  }
+  .about-body p strong { color: var(--ink); font-weight: 500; }
+  .education-block { margin-top: 2.5rem; }
+  .edu-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem 0; border-top: 1px solid var(--mist);
+  }
+  .edu-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: .1rem;
+  }
+  .edu-icon svg { color: #fff; }
+  .edu-name { font-weight: 500; font-size: .95rem; color: var(--ink); }
+  .edu-desc { font-size: .85rem; color: var(--steel); }
+  .clients-grid {
+    display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem;
+  }
+  .client-tag {
+    padding: .35rem .9rem;
+    background: var(--mist); border-radius: 2px;
+    font-size: .78rem; font-weight: 500; letter-spacing: .05em;
+    color: var(--steel);
+  }
+
+  /* ── EXPERTISE ── */
+  #expertise { background: var(--ink); color: #fff; }
+  #expertise .section-title { color: #fff; }
+  #expertise .section-label { color: var(--gold-light); }
+  #expertise .divider { background: var(--gold-light); }
+  .expertise-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all .3s;
+    cursor: default;
+  }
+  .expertise-card:hover {
+    background: rgba(197,151,58,.08);
+    border-color: rgba(197,151,58,.4);
+    transform: translateY(-3px);
+  }
+  .expertise-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center;
+    justify-content: center; margin-bottom: 1.2rem;
+  }
+  .expertise-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: #fff;
+    margin-bottom: .6rem;
+  }
+  .expertise-desc { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.65; }
+  .expertise-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+  .etag {
+    padding: .2rem .65rem; border-radius: 20px;
+    border: 1px solid rgba(197,151,58,.35);
+    font-size: .7rem; color: var(--gold-light); letter-spacing: .06em;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--cream); }
+  .timeline { position: relative; padding-left: 2.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: .5rem; bottom: 0;
+    width: 1px; background: var(--mist);
+  }
+  .timeline-item { position: relative; margin-bottom: 3rem; }
+  .timeline-dot {
+    position: absolute; left: -2.73rem; top: .35rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .timeline-period {
+    font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: .3rem;
+  }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--ink); margin-bottom: .25rem;
+  }
+  .timeline-company { font-size: .88rem; color: var(--steel); font-weight: 500; margin-bottom: .6rem; }
+  .timeline-body { font-size: .9rem; color: var(--steel); font-weight: 300; max-width: 60ch; }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--fog); }
+  .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; }
+  .project-card {
+    background: var(--cream); border: 1px solid var(--mist);
+    border-radius: 4px; padding: 2rem;
+    transition: all .3s; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .project-card:hover { box-shadow: 0 12px 40px rgba(15,25,35,.08); transform: translateY(-2px); }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .project-icon {
+    width: 44px; height: 44px; border-radius: 8px;
+    background: var(--accent); display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0;
+  }
+  .project-icon svg { color: #fff; }
+  .project-arrow { color: var(--steel); transition: transform .2s; }
+  .project-card:hover .project-arrow { transform: translate(3px,-3px); color: var(--gold); }
+  .project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; }
+  .project-desc { font-size: .87rem; color: var(--steel); font-weight: 300; line-height: 1.6; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
+  .ptag {
+    padding: .2rem .65rem; border-radius: 2px;
+    background: var(--mist);
+    font-size: .7rem; color: var(--steel); letter-spacing: .05em;
+  }
+
+  /* ── ARTICLES ── */
+  #articles { background: var(--cream); }
+  .articles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+  .article-card {
+    border-top: 2px solid var(--mist);
+    padding-top: 1.5rem;
+    transition: border-color .25s;
+    text-decoration: none; color: inherit;
+    display: block;
+  }
+  .article-card:hover { border-color: var(--gold); }
+  .article-cat {
+    font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .6rem; font-weight: 500;
+  }
+  .article-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.35;
+    margin-bottom: .6rem; color: var(--ink);
+  }
+  .article-card:hover .article-title { color: var(--accent); }
+  .article-meta { font-size: .78rem; color: var(--steel); }
+
+  /* ── CONNECT ── */
+  #connect {
+    background: var(--ink); color: #fff;
+    text-align: center; padding: 8rem 4rem;
+  }
+  #connect .section-label { color: var(--gold-light); }
+  #connect .section-title { color: #fff; }
+  #connect .divider { margin: 0 auto 2rem; }
+  .connect-subtitle {
+    font-size: 1.05rem; color: rgba(255,255,255,.55);
+    max-width: 50ch; margin: 0 auto 3rem; font-weight: 300;
+  }
+  .social-links {
+    display: flex; justify-content: center; gap: 1.2rem;
+    flex-wrap: wrap; margin-top: 2.5rem;
+  }
+  .social-link {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .8rem 1.6rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 2px;
+    color: rgba(255,255,255,.75); text-decoration: none;
+    font-size: .82rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    transition: all .25s;
+  }
+  .social-link:hover {
+    background: var(--gold); border-color: var(--gold); color: var(--ink);
+  }
+  .email-link {
+    display: inline-block; color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 300; text-decoration: none;
+    border-bottom: 1px solid rgba(197,151,58,.35);
+    transition: border-color .2s;
+  }
+  .email-link:hover { border-color: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #090e14; color: rgba(255,255,255,.3);
+    text-align: center; padding: 2rem 4rem;
+    font-size: .78rem; letter-spacing: .06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text > * { animation: fadeUp .7s ease both; }
+  .hero-text > *:nth-child(1) { animation-delay: .1s; }
+  .hero-text > *:nth-child(2) { animation-delay: .2s; }
+  .hero-text > *:nth-child(3) { animation-delay: .3s; }
+  .hero-text > *:nth-child(4) { animation-delay: .4s; }
+  .hero-text > *:nth-child(5) { animation-delay: .5s; }
+  .hero-image-wrap { animation: fadeUp .9s ease .3s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 7rem 2rem 4rem; }
+    .hero-image-wrap { display: none; }
+    section { padding: 5rem 2rem; }
+    .two-col, .three-col, .projects-grid, .articles-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Satya Sachdeva</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#articles">Writing</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">AI & Data Leader · CTO · Strategist</p>
+    <h1 class="hero-name">Satya<br><em>Sachdeva</em></h1>
+    <p class="hero-title">Hands-on CTO &amp; Co-Founder at Previsant — pioneering Adaptive Intelligence platforms that unify Gen AI, Graph Databases, AI Agents, and Quantum Computing.</p>
+    <div class="hero-cta">
+      <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/" target="_blank" class="btn btn-primary">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn Profile
+      </a>
+      <a href="mailto:satya.sachdeva@gmail.com" class="btn btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">25+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div>
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Engagements</span>
+      </div>
+      <div>
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Industries Served</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <div class="hero-img-bg"></div>
+    <div class="hero-img-ring"></div>
+    <!-- LinkedIn photo — replace src with actual downloaded photo -->
+    <div class="hero-photo-placeholder">
+      <svg width="72" height="72" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/></svg>
+      <span style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;opacity:.5;">Satya Sachdeva</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="two-col">
+    <div>
+      <p class="section-label">About</p>
+      <h2 class="section-title">Turning Data into<br><em>Competitive Advantage</em></h2>
+      <div class="divider"></div>
+      <div class="about-body">
+        <p>Satya Sachdeva is a hands-on CTO and AI Strategist with over <strong>25 years of experience</strong> delivering innovative solutions to complex business problems across Financial Services, Healthcare, and High-Tech industries.</p>
+        <p>As Co-Founder of <strong>Previsant</strong>, Satya has pioneered the Adaptive Intelligence platform — unifying Gen AI, Graph Databases, AI Agents, MCP (Model Context Protocol), and Relational Databases into next-generation tools for healthcare fraud, waste, and abuse prevention.</p>
+        <p>He has provided thought leadership guiding organisations from traditional BI to cutting-edge AI, including leveraging quantum computing for pharmaceutical and medical-device next-gen capabilities.</p>
+      </div>
+
+      <div class="education-block">
+        <p class="section-label" style="margin-bottom:1rem;">Education</p>
+        <div class="edu-item">
+          <div class="edu-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+          </div>
+          <div>
+            <div class="edu-name">MBA — Kellogg Graduate School of Business</div>
+            <div class="edu-desc">Northwestern University</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+          </div>
+          <div>
+            <div class="edu-name">B.E. — Electronics &amp; Electrical Engineering</div>
+            <div class="edu-desc">Delhi College of Engineering</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="section-label">Key Clients</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:1rem;">Trusted by Industry Leaders</h3>
+      <div class="divider"></div>
+      <div class="clients-grid">
+        <span class="client-tag">Exelon / GE Power</span>
+        <span class="client-tag">Ally Financial</span>
+        <span class="client-tag">P&amp;G</span>
+        <span class="client-tag">Johnson &amp; Johnson</span>
+        <span class="client-tag">Wells Fargo</span>
+        <span class="client-tag">T. Rowe Price</span>
+        <span class="client-tag">Munich Re</span>
+        <span class="client-tag">GE Aviation</span>
+        <span class="client-tag">BCBSM</span>
+      </div>
+
+      <div style="margin-top:3rem;">
+        <p class="section-label">Technology Stack</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:1rem;">Tools &amp; Platforms</h3>
+        <div class="divider"></div>
+        <div class="clients-grid">
+          <span class="client-tag">LlamaIndex</span>
+          <span class="client-tag">LangChain</span>
+          <span class="client-tag">Memgraph</span>
+          <span class="client-tag">Snowflake</span>
+          <span class="client-tag">Vector DB</span>
+          <span class="client-tag">AWS</span>
+          <span class="client-tag">Azure</span>
+          <span class="client-tag">Gen AI / LLMs</span>
+          <span class="client-tag">Quantum Computing</span>
+          <span class="client-tag">MCP Protocol</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <p class="section-label">Areas of Expertise</p>
+  <h2 class="section-title">Deep Domain<br><em>Knowledge</em></h2>
+  <div class="divider"></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+      </div>
+      <div class="expertise-title">AI Strategy, Governance &amp; Implementation</div>
+      <div class="expertise-desc">End-to-end AI strategy from roadmap to production. Gen AI, LLMs, RAG, AI Agents, and Adaptive Intelligence platforms delivering measurable business outcomes.</div>
+      <div class="expertise-tags">
+        <span class="etag">Gen AI</span><span class="etag">LLMs</span><span class="etag">RAG</span><span class="etag">AI Agents</span><span class="etag">MCP</span>
+      </div>
+    </div>
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="expertise-title">Data Governance &amp; Privacy</div>
+      <div class="expertise-desc">Comprehensive data governance frameworks, GDPR compliance, cyber-security, and data privacy architecture for regulated industries including banking and healthcare.</div>
+      <div class="expertise-tags">
+        <span class="etag">GDPR</span><span class="etag">Data Privacy</span><span class="etag">Compliance</span><span class="etag">Cyber Security</span>
+      </div>
+    </div>
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 5h10M5 7v10M7 19h10M19 7v10"/></svg>
+      </div>
+      <div class="expertise-title">Graph Databases &amp; Knowledge Graphs</div>
+      <div class="expertise-desc">Design and implementation of property graph databases using Memgraph and Neo4j to unlock hidden relationships in complex enterprise data.</div>
+      <div class="expertise-tags">
+        <span class="etag">Memgraph</span><span class="etag">Neo4j</span><span class="etag">Knowledge Graphs</span>
+      </div>
+    </div>
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="expertise-title">Customer 360</div>
+      <div class="expertise-desc">Unified customer data platforms and CRM implementations providing a single customer view that drives personalisation, revenue growth, and operational excellence.</div>
+      <div class="expertise-tags">
+        <span class="etag">MDM</span><span class="etag">CRM</span><span class="etag">CDP</span><span class="etag">Personalisation</span>
+      </div>
+    </div>
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="expertise-title">Quantum Computing</div>
+      <div class="expertise-desc">Led Capgemini's Quantum Computing COE. Currently developing quantum-powered AI products at Previsant for healthcare, pharma, and financial services use cases.</div>
+      <div class="expertise-tags">
+        <span class="etag">Quantum ML</span><span class="etag">Quantum Comm.</span><span class="etag">COE Leadership</span>
+      </div>
+    </div>
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      </div>
+      <div class="expertise-title">Cloud Data Management</div>
+      <div class="expertise-desc">Architecture and migration of enterprise data platforms on AWS and Azure. Snowflake, Vector Databases, and modern data stack implementations at scale.</div>
+      <div class="expertise-tags">
+        <span class="etag">Snowflake</span><span class="etag">AWS</span><span class="etag">Azure</span><span class="etag">Vector DB</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="two-col">
+    <div>
+      <p class="section-label">Career Journey</p>
+      <h2 class="section-title">25+ Years of<br><em>Impact</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div></div>
+  </div>
+  <div class="timeline" style="max-width:800px;margin-top:1rem;">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Aug 2022 – Present</div>
+      <div class="timeline-role">CTO &amp; Co-Founder</div>
+      <div class="timeline-company">Previsant · AI Startup</div>
+      <div class="timeline-body">Leading development of AI-based solutions for healthcare fraud, waste, and abuse prevention. Pioneered the Adaptive Intelligence platform unifying Gen AI, Graph Databases, AI Agents, and MCP. Advising startups, Private Equity firms, and C-level executives on AI/Cloud/Data Strategy.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2010 – 2022</div>
+      <div class="timeline-role">Vice President — Insights, Data &amp; Strategic Solutions</div>
+      <div class="timeline-company">Capgemini</div>
+      <div class="timeline-body">Led Digital Transformation, IT Modernisation, and AI/Data engagements for Financial Services, Healthcare, and High-Tech clients. Founded and led Capgemini's Quantum Computing Center of Excellence.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2004 – 2010</div>
+      <div class="timeline-role">Senior Principal</div>
+      <div class="timeline-company">Kingsbridge / HP</div>
+      <div class="timeline-body">Pioneered use of Data Governance for Risk Management for Power Generation and Utility companies. Supported Basel II implementation in banking.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2002 – 2004</div>
+      <div class="timeline-role">CIO &amp; Vice President</div>
+      <div class="timeline-company">Cendant Corporation</div>
+      <div class="timeline-body">Responsible for implementing Data Governance as a core component of a large-scale CRM implementation across the enterprise.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">1997 – 2001</div>
+      <div class="timeline-role">Director / Vice President — Business Intelligence</div>
+      <div class="timeline-company">Hitachi Consulting Services</div>
+      <div class="timeline-body">Built and led Business Intelligence practice. Delivered enterprise BI solutions across multiple verticals including retail, manufacturing, insurance, and banking.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">GitHub Projects</p>
+  <h2 class="section-title">Applications &amp;<br><em>Open Source</em></h2>
+  <div class="divider"></div>
+  <div class="projects-grid">
+
+    <a href="https://github.com/satya-sachdeva" target="_blank" class="project-card">
+      <div class="project-header">
+        <div class="project-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <svg class="project-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="project-title">Adaptive Intelligence Platform</div>
+      <div class="project-desc">Next-generation platform unifying Gen AI, Graph Databases, AI Agents, MCP Protocol, and Relational Databases. Powers Previsant's healthcare FWA detection suite.</div>
+      <div class="project-tags">
+        <span class="ptag">Gen AI</span><span class="ptag">Graph DB</span><span class="ptag">MCP</span><span class="ptag">LangChain</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/satya-sachdeva" target="_blank" class="project-card">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--accent2);">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 5h10M5 7v10M7 19h10M19 7v10"/></svg>
+        </div>
+        <svg class="project-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="project-title">Healthcare Knowledge Graph</div>
+      <div class="project-desc">Graph-database solution built on Memgraph to detect fraud, waste, and abuse patterns in healthcare claims data through relationship analysis.</div>
+      <div class="project-tags">
+        <span class="ptag">Memgraph</span><span class="ptag">Python</span><span class="ptag">Healthcare</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/satya-sachdeva" target="_blank" class="project-card">
+      <div class="project-header">
+        <div class="project-icon" style="background:#7c3aed;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <svg class="project-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="project-title">Quantum ML Experiments</div>
+      <div class="project-desc">Experiments in quantum machine learning and quantum computing algorithms, exploring near-term quantum advantage for financial and pharma optimisation problems.</div>
+      <div class="project-tags">
+        <span class="ptag">Quantum</span><span class="ptag">Python</span><span class="ptag">Qiskit</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/satya-sachdeva" target="_blank" class="project-card">
+      <div class="project-header">
+        <div class="project-icon" style="background:#b45309;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <svg class="project-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+      <div class="project-title">RAG Pipeline — Enterprise Search</div>
+      <div class="project-desc">Production-grade Retrieval-Augmented Generation pipeline using LlamaIndex and vector databases, enabling semantic search over enterprise document repositories.</div>
+      <div class="project-tags">
+        <span class="ptag">LlamaIndex</span><span class="ptag">Vector DB</span><span class="ptag">RAG</span><span class="ptag">Snowflake</span>
+      </div>
+    </a>
+
+  </div>
+  <div style="margin-top:2rem;text-align:center;">
+    <a href="https://github.com/satya-sachdeva" target="_blank" class="btn btn-secondary">View All on GitHub →</a>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles">
+  <p class="section-label">Thought Leadership</p>
+  <h2 class="section-title">Articles &amp;<br><em>Publications</em></h2>
+  <div class="divider"></div>
+  <div class="articles-grid">
+
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/recent-activity/articles/" target="_blank" class="article-card">
+      <div class="article-cat">AI Strategy</div>
+      <div class="article-title">The Adaptive Intelligence Paradigm: Beyond Traditional AI Implementation</div>
+      <div class="article-meta">LinkedIn Article · 2025</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/recent-activity/articles/" target="_blank" class="article-card">
+      <div class="article-cat">Quantum Computing</div>
+      <div class="article-title">Quantum Advantage in Enterprise: Practical Applications for 2025</div>
+      <div class="article-meta">LinkedIn Article · 2025</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/recent-activity/articles/" target="_blank" class="article-card">
+      <div class="article-cat">Data Governance</div>
+      <div class="article-title">Building Trustworthy AI: Governance Frameworks for Regulated Industries</div>
+      <div class="article-meta">LinkedIn Article · 2024</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/recent-activity/articles/" target="_blank" class="article-card">
+      <div class="article-cat">Graph Databases</div>
+      <div class="article-title">Graph Thinking: Why Relationships Are the Next Frontier in Enterprise Data</div>
+      <div class="article-meta">LinkedIn Article · 2024</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/recent-activity/articles/" target="_blank" class="article-card">
+      <div class="article-cat">Healthcare AI</div>
+      <div class="article-title">Combating Healthcare Fraud with AI: A Graph + Gen AI Approach</div>
+      <div class="article-meta">LinkedIn Article · 2024</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/recent-activity/articles/" target="_blank" class="article-card">
+      <div class="article-cat">Customer 360</div>
+      <div class="article-title">From Data Warehouse to Customer Intelligence: The Modern CDP Journey</div>
+      <div class="article-meta">LinkedIn Article · 2023</div>
+    </a>
+
+  </div>
+  <div style="margin-top:2.5rem;text-align:center;">
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/recent-activity/articles/" target="_blank" class="btn btn-secondary">Read All Articles →</a>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Let's Build Something<br><em>Remarkable</em></h2>
+  <div class="divider"></div>
+  <p class="connect-subtitle">Available for advisory roles, consulting engagements, and keynote speaking on AI Strategy, Quantum Computing, and Data Governance.</p>
+  <a href="mailto:satya.sachdeva@gmail.com" class="email-link">satya.sachdeva@gmail.com</a>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/satya-sachdeva-b4628b/" target="_blank" class="social-link">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/satya-sachdeva" target="_blank" class="social-link">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="tel:9739789797" class="social-link">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 6.06 6.06l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+      (973) 978-9797
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Satya Sachdeva · AI &amp; Data Leader · Built for GitHub Pages</p>
+</footer>
+
+</body>
+</html>
